@@ -1,0 +1,54 @@
+@import "../../base-styles/mixins.scss";
+
+.notes {
+  @include grid(null, 90px 100px, null, null);
+  font-family: "DM Sans", sans-serif;
+  justify-self: flex-start;
+  padding: 20px 40px;
+  width: 90%;
+
+  h3 {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  &_container {
+    @include grid(1fr 1fr 1fr, 1fr 1fr, 6vh, 6vh);
+
+    @media screen and (max-width: 768px) {
+      @include grid(1fr, 1fr 1fr, 6vh, 6vh);
+    }
+  }
+
+  &_note {
+    @include flex(null, space-between, column);
+    background-color: #000000;
+    padding: 25px 15px 15px;
+    border-radius: 25px;
+    color: white;
+    height: 250px;
+
+    .dateAndActions {
+      @include flex(center, space-between, row);
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    textarea {
+      background-color: transparent;
+      font-size: 16px;
+      color: white;
+      border: none;
+
+      &:focus {
+        outline: 0;
+      }
+
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "../base-styles/mixins.scss";
+
+.container {
+  @include grid(10% 90%, null, null, null);
+  justify-content: flex-start;
+
+  @media screen and (max-width: 768px) {
+    @include grid(20% 80%, null, null, null);
+  }
+}

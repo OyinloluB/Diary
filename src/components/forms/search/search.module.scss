@@ -1,0 +1,22 @@
+@import "../../../base-styles/mixins.scss";
+
+form {
+  @include flex(center, flex-start, row);
+  font-family: "DM Sans", sans-serif;
+  color: #bec5d7;
+
+  input {
+    border: 0;
+    width: 50%;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      color: #bec5d7;
+    }
+  }
+}

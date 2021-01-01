@@ -1,0 +1,57 @@
+@import "../../base-styles/mixins.scss";
+
+.sidenav {
+  height: 100vh;
+  padding: 20px 10px;
+  justify-content: center;
+  border-right: 1px solid #dfdfdf;
+  font-family: "DM Sans", sans-serif;
+  @include grid(null, 90px 100px auto, null, null);
+
+  &_logo {
+    h4 {
+      letter-spacing: 1px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+
+  &_icon {
+    @include flex(center, center, row);
+    background-color: #000000;
+    border-radius: 100%;
+    cursor: pointer;
+    padding: 15px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &_colorPickerContainer {
+    justify-self: center;
+
+    .colorPicker {
+      border-radius: 100%;
+      margin-bottom: 20px;
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+    }
+
+    .colorPicker:nth-child(1) {
+      background-color: #f5972c;
+    }
+    .colorPicker:nth-child(2) {
+      background-color: #f3542a;
+    }
+    .colorPicker:nth-child(3) {
+      background-color: #bec5d7;
+    }
+    .colorPicker:nth-child(4) {
+      background-color: #0aa4f6;
+    }
+    .colorPicker:nth-child(5) {
+      background-color: #c6d947;
+    }
+  }
+}
