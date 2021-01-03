@@ -41,14 +41,17 @@ const Note = ({
         placeholder="Note"
         onChange={(e) => handleChange(item.id, e.target.value)}
       />
-      <input
-        type="date"
-        name="date"
-        disabled={!isNoteSaved ? false : true}
-        value={item.date}
-        placeholder="Note"
-        onChange={(e) => handleDate(item.id, e.target.value)}
-      />
+      <div>
+        <p>Date:</p>
+        <input
+          type="date"
+          name="date"
+          disabled={!isNoteSaved ? false : true}
+          value={item.date}
+          placeholder="Note"
+          onChange={(e) => handleDate(item.id, e.target.value)}
+        />
+      </div>
       <div className={Styles.dateAndActions}>
         <span>{new Date(item.currentDate).toDateString()}</span>
         <div className={Styles.dateAndActions_actions}>

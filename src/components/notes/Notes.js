@@ -44,6 +44,7 @@ const Notes = ({
       />
       <div>
         <h3>Notes</h3>
+        <p>Tap icon to write note and submit note.</p>
       </div>
       <div className={Styles.notes_container}>
         {sortedNotes.map((item, index) => {
