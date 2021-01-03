@@ -16,6 +16,7 @@ const Notes = ({
   deleteNote,
   searchDate,
   saveNote,
+  setForm,
   search,
   filter,
   sort,
@@ -33,7 +34,6 @@ const Notes = ({
     }
   });
 
-  console.log(sort);
   return (
     <div className={Styles.notes}>
       <TopNav
@@ -52,7 +52,9 @@ const Notes = ({
             <Note
               item={item}
               key={index}
+              form={form}
               index={index}
+              setForm={setForm}
               handleDate={handleDate}
               saveAllNotes={saveAllNotes}
               handleChange={handleChange}

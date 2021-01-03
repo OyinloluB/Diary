@@ -9,29 +9,29 @@ import Styles from "./note.module.scss";
 const Note = ({
   handleChange,
   deleteNote,
+  setForm,
+  form,
   item,
   index,
   saveAllNotes,
   handleDate,
 }) => {
-  const [isNoteSaved, setIsNoteSaved] = useState(false);
+  const saveNote = (noteId) => {
+    saveAllNotes(noteId);
 
-  let noteSavedStatus;
-  useEffect(() => {
-    noteSavedStatus = localStorage.getItem("saved");
-
-    setIsNoteSaved(noteSavedStatus);
-  }, []);
-  console.log(noteSavedStatus);
-
-  const saveNote = () => {
-    saveAllNotes();
-    setIsNoteSaved(true);
-    localStorage.setItem("saved", isNoteSaved);
+    setForm(
+      form.map((item) =>
+        item.id === noteId ? { ...item, saved: !item.saved } : item
+      )
+    );
   };
 
-  const editNote = () => {
-    setIsNoteSaved(false);
+  const editNote = (noteId) => {
+    setForm(
+      form.map((item) =>
+        item.id === noteId ? { ...item, saved: !item.saved } : item
+      )
+    );
   };
 
   return (
@@ -44,7 +44,7 @@ const Note = ({
         cols="25"
         type="text"
         name="note"
-        disabled={!isNoteSaved ? false : true}
+        disabled={!item.saved ? false : true}
         value={item.note}
         placeholder="Note"
         onChange={(e) => handleChange(item.id, e.target.value)}
@@ -54,7 +54,7 @@ const Note = ({
         <input
           type="date"
           name="date"
-          disabled={!isNoteSaved ? false : true}
+          disabled={!item.saved ? false : true}
           value={item.date}
           placeholder="Date"
           onChange={(e) => handleDate(item.id, e.target.value)}
@@ -73,7 +73,7 @@ const Note = ({
               onClick={(e) => deleteNote(e, index)}
             />
           </div>
-          {!isNoteSaved ? (
+          {!item.saved ? (
             <div>
               <SendIcon
                 style={{
@@ -81,7 +81,7 @@ const Note = ({
                   cursor: "pointer",
                   marginRight: "25px",
                 }}
-                onClick={() => saveNote()}
+                onClick={() => saveNote(item.id)}
               />
             </div>
           ) : (
@@ -92,7 +92,7 @@ const Note = ({
                   cursor: "pointer",
                   marginRight: "25px",
                 }}
-                onClick={() => editNote()}
+                onClick={() => editNote(item.id)}
               />
             </div>
           )}

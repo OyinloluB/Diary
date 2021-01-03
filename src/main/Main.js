@@ -11,14 +11,13 @@ const Main = () => {
   const [search, setSearch] = useState("");
   const colorPicker = ["#f5972c", "#f3542a", "#bec5d7", "#0aa4f6", "#c6d947"];
 
-  console.log(form.find((item) => console.log(item)));
-
   let sample;
   useEffect(() => {
     sample = localStorage.getItem("Form");
     if (sample) {
       setForm(JSON.parse(sample));
     }
+    console.log(form.find((item) => console.log(item)));
   }, []);
 
   const handleAddButton = (index) => {
@@ -28,6 +27,7 @@ const Main = () => {
       color: index,
       currentDate: new Date(),
       id: form.length + 1,
+      saved: false,
     };
 
     setForm((prev) => [...prev, inputState]);
@@ -49,8 +49,15 @@ const Main = () => {
     );
   };
 
-  const saveAllNotes = () => {
-    localStorage.setItem("Form", JSON.stringify(form));
+  const saveAllNotes = (noteId) => {
+    localStorage.setItem(
+      "Form",
+      JSON.stringify(
+        form.map((item) =>
+          item.id === noteId ? { ...item, saved: true } : item
+        )
+      )
+    );
   };
 
   const handleSort = (e) => {
@@ -94,9 +101,10 @@ const Main = () => {
         deleteNote={deleteNote}
         searchDate={searchDate}
         handleSort={handleSort}
+        setForm={setForm}
         search={search}
-        sort={sort}
         filter={filter}
+        sort={sort}
         form={form}
       />
     </div>
