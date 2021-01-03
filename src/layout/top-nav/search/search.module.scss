@@ -5,6 +5,10 @@ form {
   font-family: "DM Sans", sans-serif;
   color: #bec5d7;
 
+  @media screen and (max-width: 768px) {
+    margin-bottom: 3vh;
+  }
+
   input {
     border: 0;
     width: 100%;
