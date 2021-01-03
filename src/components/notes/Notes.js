@@ -33,6 +33,18 @@ const Notes = ({
     }
   });
 
+  const filteredNotes = sortedNotes.sort((a, b) => {
+    if (filter === "Month") {
+      return (
+        new Date(b.date).getMonth() - new Date(a.date).getMonth()
+      );
+    } else if (filter === "Year") {
+      return (
+         new Date(b.date).getYear() - new Date(a.date).getYear()
+      );
+    }
+  });
+
   return (
     <div className={Styles.notes}>
       <TopNav
@@ -46,7 +58,7 @@ const Notes = ({
         <p>Tap icon to write note and submit note.</p>
       </div>
       <div className={Styles.notes_container}>
-        {sortedNotes.map((item, index) => {
+        {filteredNotes.map((item, index) => {
           return (
             <Note
               item={item}

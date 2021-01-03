@@ -62,10 +62,12 @@ const Main = () => {
 
   const handleSort = (e) => {
     setSort(e.target.value);
+    console.log(e.target.value);
   };
 
   const handleFilter = (e) => {
     setFilter(e.target.value);
+    console.log(e.target.value);
   };
 
   const deleteNote = (e, index) => {
