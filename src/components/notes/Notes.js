@@ -1,64 +1,65 @@
-import React, { useEffect } from "react";
-import Search from "../forms/search/Search";
+import React, { useState } from "react";
+import TopNav from "../../layout/top-nav/nav/TopNav";
+import Search from "../../layout/top-nav/search/Search";
 
-import DeleteIcon from "@material-ui/icons/Delete";
-import SendIcon from "@material-ui/icons/Send";
-import EditIcon from "@material-ui/icons/Edit";
+import Note from "./Note";
 
 import Styles from "./note.module.scss";
 
 const Notes = ({
+  saveAllNotes,
   handleChange,
+  isNoteSaved,
+  handleFilter,
+  handleDate,
+  handleSort,
   deleteNote,
   searchDate,
   saveNote,
   search,
+  filter,
+  sort,
   form,
 }) => {
-  useEffect(() => {
-    console.log(form);
-  }, []);
+  const sortedNotes = form.sort((a, b) => {
+    if (sort === "Newest") {
+      return (
+        new Date(b.currentDate).getTime() - new Date(a.currentDate).getTime()
+      );
+    } else if (sort === "Oldest") {
+      return (
+        new Date(a.currentDate).getTime() - new Date(b.currentDate).getTime()
+      );
+    }
+  });
+
+  console.log(sort);
   return (
     <div className={Styles.notes}>
-      <Search search={search} searchDate={searchDate} />
+      <TopNav
+        searchDate={searchDate}
+        search={search}
+        handleSort={handleSort}
+        handleFilter={handleFilter}
+      />
       <div>
         <h3>Notes</h3>
       </div>
       <div className={Styles.notes_container}>
-        {form
-          ?.sort((a, b) => b.currentDate - a.currentDate)
-          .map((item, index) => {
-            return (
-              <div
-                className={Styles.notes_note}
-                style={{ backgroundColor: `${item.color}` }}
-                key={index}
-              >
-                <textarea
-                  rows="50"
-                  cols="25"
-                  type="text"
-                  name="note"
-                  value={item.note}
-                  placeholder="Note"
-                  onChange={(e) => handleChange(index, e)}
-                />
-                <div className={Styles.dateAndActions}>
-                  <span>{item.currentDate}</span>
-                  <div>
-                    <DeleteIcon
-                      style={{
-                        fontSize: "20px",
-                        cursor: "pointer",
-                        marginRight: "25px",
-                      }}
-                      onClick={(e) => deleteNote(e, index)}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        {sortedNotes.map((item, index) => {
+          return (
+            <Note
+              item={item}
+              key={index}
+              handleDate={handleDate}
+              saveAllNotes={saveAllNotes}
+              handleChange={handleChange}
+              isNoteSaved={isNoteSaved}
+              deleteNote={deleteNote}
+              saveNote={saveNote}
+            />
+          );
+        })}
       </div>
     </div>
   );

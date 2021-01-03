@@ -34,9 +34,19 @@
       span {
         font-size: 12px;
       }
+
+      &_actions {
+        @include flex(center, space-between, row);
+      }
     }
 
-    textarea {
+    input {
+      height: 110px;
+      margin-bottom: 15px;
+    }
+
+    textarea,
+    input {
       background-color: transparent;
       font-size: 16px;
       color: white;

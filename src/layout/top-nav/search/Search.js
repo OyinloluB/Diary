@@ -2,9 +2,11 @@ import React from "react";
 
 import SearchIcon from "@material-ui/icons/Search";
 
-import Styles from "./search.module.scss";
+import "./search.module.scss";
 
 const Search = ({ search, searchDate }) => {
+  console.log("search", search);
+
   return (
     <div>
       <form>
@@ -17,7 +19,7 @@ const Search = ({ search, searchDate }) => {
           type="text"
           name="search"
           value={search}
-          placeholder="Search diary by month, year or week"
+          placeholder="Search notes by name "
           onChange={searchDate}
         />
       </form>

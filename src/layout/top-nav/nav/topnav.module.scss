@@ -1,0 +1,9 @@
+@import "../../../base-styles/mixins.scss";
+
+.topnav {
+  @include flex(center, space-between, row);
+
+  &_buttons {
+    @include flex(center, null, row);
+  }
+}
