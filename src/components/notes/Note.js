@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import SendIcon from "@material-ui/icons/Send";
@@ -10,16 +10,24 @@ const Note = ({
   handleChange,
   deleteNote,
   item,
-  key,
   index,
   saveAllNotes,
   handleDate,
 }) => {
   const [isNoteSaved, setIsNoteSaved] = useState(false);
 
+  let noteSavedStatus;
+  useEffect(() => {
+    noteSavedStatus = localStorage.getItem("saved");
+
+    setIsNoteSaved(noteSavedStatus);
+  }, []);
+  console.log(noteSavedStatus);
+
   const saveNote = () => {
     saveAllNotes();
     setIsNoteSaved(true);
+    localStorage.setItem("saved", isNoteSaved);
   };
 
   const editNote = () => {
@@ -73,7 +81,7 @@ const Note = ({
                   cursor: "pointer",
                   marginRight: "25px",
                 }}
-                onClick={(e) => saveNote()}
+                onClick={() => saveNote()}
               />
             </div>
           ) : (
@@ -84,7 +92,7 @@ const Note = ({
                   cursor: "pointer",
                   marginRight: "25px",
                 }}
-                onClick={(e) => editNote()}
+                onClick={() => editNote()}
               />
             </div>
           )}
