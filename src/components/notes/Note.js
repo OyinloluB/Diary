@@ -42,13 +42,13 @@ const Note = ({
         onChange={(e) => handleChange(item.id, e.target.value)}
       />
       <div>
-        <p>Date:</p>
+        <label>Date:</label>
         <input
           type="date"
           name="date"
           disabled={!isNoteSaved ? false : true}
           value={item.date}
-          placeholder="Note"
+          placeholder="Date"
           onChange={(e) => handleDate(item.id, e.target.value)}
         />
       </div>
