@@ -3,6 +3,10 @@
 .topnav {
   @include flex(center, space-between, row);
 
+  @media screen and (max-width: 768px) {
+    @include flex(flex-start, null, column);
+  }
+
   &_buttons {
     @include flex(center, null, row);
   }
