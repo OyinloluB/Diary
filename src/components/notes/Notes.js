@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import TopNav from "../../layout/top-nav/nav/TopNav";
-import Search from "../../layout/top-nav/search/Search";
 
 import Note from "./Note";
 
