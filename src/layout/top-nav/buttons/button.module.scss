@@ -5,4 +5,8 @@ select {
   background-color: black;
   text-transform: uppercase;
   font-family: "DM Sans", sans-serif;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 }
