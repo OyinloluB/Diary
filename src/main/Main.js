@@ -11,6 +11,8 @@ const Main = () => {
   const [search, setSearch] = useState("");
   const colorPicker = ["#f5972c", "#f3542a", "#bec5d7", "#0aa4f6", "#c6d947"];
 
+  console.log(form.find((item) => console.log(item)));
+
   let sample;
   useEffect(() => {
     sample = localStorage.getItem("Form");

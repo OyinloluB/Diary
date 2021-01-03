@@ -51,6 +51,7 @@ const Notes = ({
             <Note
               item={item}
               key={index}
+              index={index}
               handleDate={handleDate}
               saveAllNotes={saveAllNotes}
               handleChange={handleChange}

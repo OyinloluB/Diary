@@ -11,11 +11,11 @@ const Note = ({
   deleteNote,
   item,
   key,
+  index,
   saveAllNotes,
   handleDate,
 }) => {
   const [isNoteSaved, setIsNoteSaved] = useState(false);
-  const noteRef = useRef(null);
 
   const saveNote = () => {
     saveAllNotes();
@@ -59,7 +59,7 @@ const Note = ({
                 cursor: "pointer",
                 marginRight: "25px",
               }}
-              onClick={(e) => deleteNote(e, key)}
+              onClick={(e) => deleteNote(e, index)}
             />
           </div>
           {!isNoteSaved ? (
